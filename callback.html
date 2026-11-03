@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Callback Mercado Livre</title>
+</head>
+<body>
+  <h2>Código de autorização</h2>
+  <pre id="out" style="font-size:1.2em"></pre>
+  <button id="copy">Copiar código</button>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const code = p.get("code");
+    const out = document.getElementById("out");
+    out.textContent = code || ("Nenhum código encontrado. Erro: " + (p.get("error") || "desconhecido"));
+    document.getElementById("copy").onclick = () => navigator.clipboard.writeText(code || "");
+  </script>
+</body>
+</html>
